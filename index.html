@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Camila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #4c1d95, #2e1065, #1e1b4b);
+            color: #f3e8ff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .font-dancing {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* --- Animación de Estrellas --- */
+        .star {
+            position: absolute;
+            background-color: #facc15; /* yellow-400 */
+            border-radius: 50%;
+            animation: twinkle 5s infinite ease-in-out;
+            box-shadow: 0 0 10px #facc15, 0 0 20px #facc15;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* --- Animación de Bola de Disco Principal --- */
+        .disco-ball {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #f0abfc, #d946ef, #a21caf);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #d946ef, inset 0 0 20px rgba(255, 255, 255, 0.3);
+            animation: rotate-disco 15s linear infinite, sparkle-disco 1.5s infinite alternate;
+            display: inline-block;
+            overflow: hidden;
+        }
+        
+        /* Cuadraditos para la bola principal */
+        .disco-ball::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(255,255,255,0.2) 2px, rgba(255,255,255,0.2) 6px),
+                repeating-linear-gradient(135deg, transparent, transparent 1px, rgba(255,255,255,0.2) 2px, rgba(255,255,255,0.2) 6px);
+            background-size: 18px 18px; /* Cuadrados más grandes */
+            animation: rotate-disco 15s linear infinite reverse;
+        }
+
+        .disco-ball::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: #718096;
+        }
+
+        @keyframes rotate-disco {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes sparkle-disco {
+            0% { box-shadow: 0 0 40px #d946ef, inset 0 0 20px rgba(255, 255, 255, 0.3); }
+            100% { box-shadow: 0 0 55px #f0abfc, inset 0 0 28px rgba(255, 255, 255, 0.6); }
+        }
+
+        /* --- Bolas de disco en el fondo (CON CUADRADITOS MÁS GRANDES) --- */
+        .bg-disco-ball {
+            position: absolute; 
+            border-radius: 50%;
+            animation: float-effect 10s ease-in-out infinite;
+            opacity: 0.8;
+            overflow: hidden; 
+        }
+
+        /* Cuadrados brillantes en la bola de disco (MÁS GRANDES) */
+        .bg-disco-ball::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15) 1px, transparent 1px, transparent 20px), 
+                repeating-linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15) 1px, transparent 1px, transparent 20px); 
+            animation: rotate-disco 25s linear infinite;
+        }
+
+        /* Efecto de brillo animado */
+        .bg-disco-ball::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 100%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 80%);
+            border-radius: 50%;
+            animation: glint-effect 4s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes float-effect {
+            0% { transform: translateY(0px) rotate(-10deg); }
+            50% { transform: translateY(-40px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(-10deg); }
+        }
+        
+        @keyframes glint-effect {
+            0%, 100% { opacity: 0; transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(0.5); }
+            50% { opacity: 1; transform: translateX(20%) translateY(20%) rotate(60deg) scale(1.2); }
+        }
+        
+        .card {
+            background-color: rgba(46, 16, 101, 0.6);
+            border: 1px solid rgba(233, 213, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #d946ef, #a855f7);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 70, 239, 0.6);
+        }
+        
+        /* NUEVO: Contenedor para destellos */
+        .sparkle-container {
+            position: relative;
+        }
+
+        /* NUEVO: Estilo de destellos */
+        .glint {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+            animation: glint-animation 2s infinite ease-in-out;
+        }
+
+        @keyframes glint-animation {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.4);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+</head>
+<body class="min-h-screen w-full">
+
+    <!-- Contenedor de Efectos de Fondo (Estrellas y Bolas de Disco) -->
+    <div id="background-effects" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden"></div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+
+        <!-- SECCIÓN 1: INVITACIÓN PRINCIPAL -->
+        <div id="invitation" class="w-full max-w-2xl text-center p-8 md:p-12 rounded-3xl card mb-12">
+            <p class="text-2xl md:text-3xl text-purple-300 mb-4">Estás invitado a celebrar</p>
+            <h1 class="font-dancing text-7xl md:text-9xl font-bold text-white mb-2">Mis XV Años</h1>
+            
+            <div id="sparkle-container" class="sparkle-container">
+                <!-- CAMBIO: Nombre en tono dorado claro -->
+                <h2 class="font-dancing text-7xl md:text-[9rem] font-bold text-[#E6C75E] mb-8">Camila</h2>
+                <div class="my-10">
+                    <div class="disco-ball"></div>
+                </div>
+            </div>
+
+            <div class="text-xl md:text-2xl space-y-4 text-purple-200">
+                <p>
+                    <span class="font-bold text-white">Viernes 08 de Agosto</span>
+                    <br>
+                    <span class="text-lg">7:00 pm (puntual)</span>
+                </p>
+                <p>
+                    <span class="font-bold text-white">Salón de Recepciones "Señor de Sipán"</span>
+                    <br>
+                    <span class="text-lg">Jr. Combate de Iquique 151 - Surco</span>
+                </p>
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Jr.+Combate+de+Iquique+151,+Surco,+Lima" target="_blank" class="inline-block mt-10 px-8 py-3 rounded-full text-white font-bold text-lg btn-primary">
+                Ver en Mapa
+            </a>
+        </div>
+
+        <!-- SECCIÓN 2: DETALLES -->
+        <div id="details" class="w-full max-w-2xl space-y-8">
+            
+            <!-- Código de Vestimenta -->
+            <div class="w-full text-center p-8 rounded-3xl card">
+                <h3 class="font-dancing text-4xl md:text-5xl font-bold text-white mb-4">Código de Vestimenta</h3>
+                <p class="text-2xl md:text-3xl text-purple-200 mb-2">Elegante</p>
+                <p class="text-md md:text-lg text-purple-300">Reservar el color <span class="font-bold text-white">morado</span> y sus similares para la quinceañera.</p>
+            </div>
+
+            <!-- Regalos -->
+            <div class="w-full text-center p-8 rounded-3xl card">
+                <h3 class="font-dancing text-4xl md:text-5xl font-bold text-white mb-4">Regalos</h3>
+                <p class="text-md md:text-lg text-purple-300 mb-4">El mejor regalo es celebrar contigo esta noche mágica. Si además deseas tener un detalle, puedes dejarlo en el salón del evento o, si lo prefieres, aquí te dejo algunas opciones virtuales.</p>
+                <div class="space-y-3 text-purple-200">
+                    <p><span class="font-bold text-white">YAPE:</span> 988 462 911 (Claudia Rivera)</p>
+                    <p><span class="font-bold text-white">Cta. BCP Ahorros:</span> 191-03005546-0-04</p>
+		<p><span class="font-bold text-white">Cta. CCI BCP:</span> 002-191-10300554600-458</p>
+                </div>
+            </div>
+
+            <!-- Confirmar Asistencia -->
+            <div class="w-full text-center p-8 rounded-3xl card">
+                <h3 class="font-dancing text-4xl md:text-5xl font-bold text-white mb-4">Confirmar Asistencia</h3>
+                <p class="text-md md:text-lg text-purple-300 mb-6">Agradecería mucho que confirmes tu asistencia hasta el <span class="font-bold text-white">04 de Agosto</span> para tener todo listo y hacer de esta una noche inolvidable.</p>
+		<p class="text-md md:text-lg text-purple-300 mb-6">Don't be late.</p>
+                <a href="https://forms.gle/BxkmckfzVoRcap4c7" target="_blank" class="inline-block px-10 py-4 rounded-full text-white font-bold text-lg btn-primary">
+                    Confirmar aquí
+                </a>
+            </div>
+
+        </div>
+         <footer class="text-center mt-12 text-purple-400 text-sm">
+            <p>Diseñado con ♥ para Camila</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const effectsContainer = document.getElementById('background-effects');
+            
+            // --- Generador de Estrellas ---
+            const numberOfStars = 200; 
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 4 + 1.5;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                const duration = Math.random() * 4 + 3;
+                const delay = Math.random() * 5;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${delay}s`;
+                effectsContainer.appendChild(star);
+            }
+
+            // --- Generador de Bolas de Disco de Fondo ---
+            const numberOfDiscoBalls = 10;
+            const discoColors = [
+                'radial-gradient(circle at 30% 30%, #ffffff, #e5e7eb, #9ca3af)', 
+                'radial-gradient(circle at 30% 30%, #f3e8ff, #e9d5ff, #c084fc)'
+            ];
+            const discoShadows = [
+                '0 0 45px #d1d5db, inset 0 0 20px rgba(255, 255, 255, 0.7)', 
+                '0 0 45px #c084fc, inset 0 0 20px rgba(255, 255, 255, 0.5)'
+            ];
+
+            for (let i = 0; i < numberOfDiscoBalls; i++) {
+                const discoBall = document.createElement('div');
+                discoBall.classList.add('bg-disco-ball');
+                
+                const colorIndex = Math.floor(Math.random() * discoColors.length);
+                discoBall.style.background = discoColors[colorIndex];
+                discoBall.style.boxShadow = discoShadows[colorIndex];
+
+                const size = Math.random() * 100 + 60;
+                discoBall.style.width = `${size}px`;
+                discoBall.style.height = `${size}px`;
+
+                if (i % 2 === 0) {
+                    discoBall.style.left = `${Math.random() * 20 - 15}%`;
+                } else {
+                    discoBall.style.left = `auto`;
+                    discoBall.style.right = `${Math.random() * 20 - 15}%`;
+                }
+                discoBall.style.top = `${Math.random() * 90}%`;
+
+                const floatDuration = Math.random() * 8 + 10;
+                const delay = Math.random() * 10;
+                
+                discoBall.style.animationDuration = `${floatDuration}s`;
+                discoBall.style.animationDelay = `${delay}s`;
+                
+                effectsContainer.appendChild(discoBall);
+            }
+
+            // --- NUEVO: Generador de Destellos alrededor del nombre y la bola ---
+            const sparkleContainer = document.getElementById('sparkle-container');
+            const numberOfGlints = 20;
+            const containerRect = sparkleContainer.getBoundingClientRect();
+            const centerX = containerRect.width / 2;
+            const centerY = containerRect.height / 2;
+
+            for (let i = 0; i < numberOfGlints; i++) {
+                const glint = document.createElement('div');
+                glint.classList.add('glint');
+
+                const angle = Math.random() * 2 * Math.PI;
+                const radiusX = centerX * 0.9 + Math.random() * (centerX * 0.4);
+                const radiusY = centerY * 0.9 + Math.random() * (centerY * 0.4);
+                
+                const top = centerY + radiusY * Math.sin(angle) - 4; // -4 para centrar el destello
+                const left = centerX + radiusX * Math.cos(angle) - 4;
+
+                glint.style.top = `${top}px`;
+                glint.style.left = `${left}px`;
+                glint.style.animationDelay = `${Math.random() * 2}s`;
+                glint.style.animationDuration = `${Math.random() * 1.5 + 1}s`;
+
+                sparkleContainer.appendChild(glint);
+            }
+        });
+    </script>
+
+</body>
+</html>
