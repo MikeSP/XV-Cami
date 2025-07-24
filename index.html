@@ -237,18 +237,16 @@
                 <p class="text-2xl md:text-3xl text-purple-200 mb-2">Elegante</p>
                 <p class="text-md md:text-lg text-purple-300">Reservar el color <span class="font-bold text-white">morado</span> y sus similares para la quinceañera.</p>
             </div>
-
-            <!-- Regalos -->
+	
+            <!-- Regalos (MODIFICADO) -->
             <div class="w-full text-center p-8 rounded-3xl card">
-                <h3 class="font-dancing text-4xl md:text-5xl font-bold text-white mb-4">Regalos</h3>
-                <p class="text-md md:text-lg text-purple-300 mb-4">El mejor regalo es celebrar contigo esta noche mágica. Si además deseas tener un detalle, puedes dejarlo en el salón del evento o, si lo prefieres, aquí te dejo algunas opciones virtuales.</p>
-                <div class="space-y-3 text-purple-200">
-                    <p><span class="font-bold text-white">YAPE:</span> 988 462 911 (Claudia Rivera)</p>
-                    <p><span class="font-bold text-white">Cta. BCP Ahorros:</span> 191-03005546-0-04</p>
-		<p><span class="font-bold text-white">Cta. CCI BCP:</span> 002-191-10300554600-458</p>
-                </div>
+                <h3 class="font-dancing text-4xl md:text-5xl font-bold text-white mb-4">Sugerencia de Regalo</h3>
+                <p class="text-md md:text-lg text-purple-300 mb-6">El mejor regalo es celebrar contigo esta noche mágica. Si además deseas tener un detalle, puedes dejarlo en el salón del evento o, si lo prefieres, aquí te dejo algunas opciones virtuales.</p>
+                <button id="gift-modal-button" class="inline-block px-10 py-4 rounded-full text-white font-bold text-lg btn-primary">
+                    Ver Sugerencia 🎁
+                </button>
             </div>
-
+		
             <!-- Confirmar Asistencia -->
             <div class="w-full text-center p-8 rounded-3xl card">
                 <h3 class="font-dancing text-4xl md:text-5xl font-bold text-white mb-4">Confirmar Asistencia</h3>
@@ -261,10 +259,36 @@
 
         </div>
          <footer class="text-center mt-12 text-purple-400 text-sm">
-            <p>Diseñado con ♥ para Camila</p>
+            <p>Diseñado con ♥ Camila</p>
         </footer>
     </div>
 
+    <!-- NUEVO: Modal de Regalo -->
+    <div id="gift-modal" class="fixed inset-0 z-50 items-center justify-center hidden">
+        <!-- Fondo oscuro -->
+        <div class="absolute inset-0 bg-black/60 modal-bg-close"></div>
+        <!-- Contenido del modal -->
+        <div class="relative w-full max-w-md p-8 m-4 rounded-3xl card modal-content">
+            <button id="close-modal-button" class="absolute top-4 right-4 text-purple-200 hover:text-white text-3xl font-bold">&times;</button>
+            <h3 class="font-dancing text-4xl text-center font-bold text-white mb-4">Regalo Virtual</h3>
+            <p class="text-md text-center text-purple-300 mb-6">Si deseas tener un detalle, puedes hacerlo aquí:</p>
+            <div class="space-y-4 text-purple-200 text-left">
+                <div>
+                    <p class="font-bold text-white text-lg">YAPE:</p>
+                    <p>988 462 911 (Claudia Rivera)</p>
+                </div>
+                <div>
+                    <p class="font-bold text-white text-lg">Cta. BCP Ahorros:</p>
+                    <p>191-03005546-0-04</p>
+                </div>
+                <div>
+                    <p class="font-bold text-white text-lg">Cta. CCI BCP:</p>
+                    <p>002-191-10300554600-458</p>
+                </div>
+            </div>
+        </div>
+    </div>
+	
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const effectsContainer = document.getElementById('background-effects');
