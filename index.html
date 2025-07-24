@@ -376,6 +376,27 @@
 
                 sparkleContainer.appendChild(glint);
             }
+	// --- NUEVA LÓGICA PARA EL MODAL DE REGALO ---
+            const giftModal = document.getElementById('gift-modal');
+            const openBtn = document.getElementById('gift-modal-button');
+            const closeBtn = document.getElementById('close-modal-button');
+            const modalBg = document.querySelector('.modal-bg-close');
+
+            // Función para abrir el modal
+            openBtn.addEventListener('click', () => {
+                giftModal.classList.remove('hidden');
+                giftModal.classList.add('flex');
+            });
+
+            // Función para cerrar el modal
+            const closeModal = () => {
+                giftModal.classList.add('hidden');
+                giftModal.classList.remove('flex');
+            };
+
+            // Eventos para cerrar
+            closeBtn.addEventListener('click', closeModal);
+            modalBg.addEventListener('click', closeModal);
         });
     </script>
 
